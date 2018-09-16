@@ -17,7 +17,7 @@
     "id": 3,
     "taskTitle": "Title of the project",
     "taskProject": "Project 1",
-    "taskPriority": "4",
+    "taskPriority": "2",
     "taskText": "Est neque doloribus sequi ipsum quas quae quam a facere atque quis error eius magni pariatur enim modi nisi suscipit ratione nulla similique veritatis, nobis quaerat? Blanditiis, ea molestiae! Blanditiis."
   },
   "4": {
@@ -31,7 +31,7 @@
     "id": 5,
     "taskTitle": "Test title",
     "taskProject": "Project 4",
-    "taskPriority": "1",
+    "taskPriority": "2",
     "taskText": "Aut necessitatibus officia dolore cupiditate facilis, debitis tempora possimus est odit deserunt dolorem asperiores illo commodi. Molestiae, amet libero, magnam culpa, harum pariatur maxime consequatur praesentium maiores veniam adipisci numquam."
   },
   "6": {
@@ -59,7 +59,7 @@
     "id": 9,
     "taskTitle": "TITLE",
     "taskProject": "Project 2",
-    "taskPriority": "4",
+    "taskPriority": "2",
     "taskText": "Reiciendis, optio ipsam perferendis nulla debitis, quo nam accusantium quia necessitatibus blanditiis possimus in ipsum excepturi illo. Nostrum temporibus perspiciatis tempore incidunt ad saepe, consectetur, corrupti neque, libero nisi fuga!"
   },
   "10": {

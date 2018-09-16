@@ -1,6 +1,7 @@
 import "../sass/style.sass";
 
 let todolist = {}; // todolist object
+let demoTasks = {}; // demo object
 let id = 0; // unique ID for task
 
 // load todolist from localStorage
@@ -23,12 +24,15 @@ function addDemoTask() {
     .then(response => response.json())
     // .then(json => console.log(json))
     .then(data => {
+      // clear current HTML todolist
+      document.querySelector(".todo__list").innerHTML = "";
       // draw demo tasks
       for (let key in data) {
         drawTodolist(data, key);
       }
       // draw demo projects filter
       drawProjectsFilter(data);
+      demoTasks = data; // write data
     });
 }
 
@@ -44,6 +48,13 @@ function drawProjectsFilter(obj) {
     uniqueFilters.add(value);
   }
   let projectsFilter = document.querySelector(".todo__filter-projects");
+  projectsFilter.options.length = 0; // reset select
+  let allOption = document.createElement("option");
+  // add "All" selector
+  allOption.value = "0";
+  allOption.text = "Все";
+  projectsFilter.add(allOption);
+  // create new options
   uniqueFilters.forEach(value => {
     let option = document.createElement("option");
     option.value = value;
@@ -200,6 +211,7 @@ function todolistFormHandler() {
 
     todolist[id] = task; // add new task to todolist object
     drawTodolist(todolist, id);
+    drawProjectsFilter(todolist);
   } else {
     // if dataID is set edit data in global todolist object and edit existing HTML tasl by ID
     todolist[dataID].taskTitle = taskTitle;
@@ -295,38 +307,46 @@ document
   });
 
 // PROJECTS FILTER
+function filterProjects(obj, keyword) {
+  let value = keyword;
+  let HTMLTasks = document.querySelectorAll(".todo-item"); // get all tasks in HTML code
+  // check selected value
+  if (value == 0) {
+    // if "All selection" - show all task
+    [].forEach.call(HTMLTasks, function(el) {
+      el.classList.remove("hidden"); // show all tasks in HTML code
+    });
+  } else {
+    // search filter value in todolist object
+    for (let key in obj) {
+      let taskProject = obj[key]["taskProject"];
+      // check filter value in tasks
+      if (taskProject == value) {
+        let searchedProjects = document.querySelectorAll(
+          `.todo-item[data-id="${key}"]`
+        );
+        [].forEach.call(searchedProjects, function(el) {
+          el.classList.remove("hidden"); // show filtered tasks
+        });
+      } else {
+        let searchedProjects = document.querySelectorAll(
+          `.todo-item[data-id="${key}"]`
+        );
+        [].forEach.call(searchedProjects, function(el) {
+          el.classList.add("hidden"); // hide tasks that doesn't match
+        });
+      }
+    }
+  }
+}
 document
   .querySelector(".todo__filter-projects")
   .addEventListener("change", function() {
     let value = this.value;
-    let HTMLTasks = document.querySelectorAll(".todo-item"); // get all tasks in HTML code
-    // check selected value
-    if (value == 0) {
-      // if "All selection" - show all task
-      [].forEach.call(HTMLTasks, function(el) {
-        el.classList.remove("hidden"); // show all tasks in HTML code
-      });
+    if (Object.keys(demoTasks).length === 0) {
+      filterProjects(todolist, value);
     } else {
-      // search filter value in todolist object
-      for (let key in todolist) {
-        let taskProject = todolist[key]["taskProject"];
-        // check filter value in tasks
-        if (taskProject == value) {
-          let searchedProjects = document.querySelectorAll(
-            `.todo-item[data-id="${key}"]`
-          );
-          [].forEach.call(searchedProjects, function(el) {
-            el.classList.remove("hidden"); // show filtered tasks
-          });
-        } else {
-          let searchedProjects = document.querySelectorAll(
-            `.todo-item[data-id="${key}"]`
-          );
-          [].forEach.call(searchedProjects, function(el) {
-            el.classList.add("hidden"); // hide tasks that doesn't match
-          });
-        }
-      }
+      filterProjects(demoTasks, value);
     }
   });
 

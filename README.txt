@@ -40,3 +40,25 @@
 
 
 http://take.ms/Fpmq9  - видео с демонстрацией функционала
+
+
+TODO ITEM ELEMENT
+<div class="todo__item todo-item" data-id="0">
+    <h4 class="todo-item__title todo-item-element">Title</h4>
+    <div class="row">
+        <div class="todo-item__project todo-item-element">
+            <span class="todo-item-element__label">Проект:</span>
+            <span class="todo-item-element__content">Project 1</span>
+		</div>
+        <div class="todo-item__priority todo-item-element">
+            <span class="todo-item-element__label">Приоритет:</span>
+            <span class="todo-item-element__content">1</span>
+		</div>
+    </div>
+    <div class="todo-item__text slide-up">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
+    <div class="todo-item__control-panel row">
+        <button class="todo-item__edit">Изменить</button>
+        <button class="todo-item__remove">Закрыть</button>
+        <button class="todo-item__toggle">Развернуть</button>
+    </div>
+</div>
