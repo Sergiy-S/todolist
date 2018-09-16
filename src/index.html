@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+</head>
+
+<body>
+
+    <div class="todo">
+        <h2 class="todo__title">Todo:</h2>
+        <div class="todo__list">
+            <div class="todo__item todo-item" data-id="0">
+                <h4 class="todo-item__title todo-item-element">Title</h4>
+                <div class="row">
+                    <div class="todo-item__project todo-item-element">
+                        <span class="todo-item-element__label">Проект:</span>
+                        <span class="todo-item-element__content">Project 1</span></div>
+                    <div class="todo-item__priority todo-item-element">
+                        <span class="todo-item-element__label">Приоритет:</span>
+                        <span class="todo-item-element__content">1</span></div>
+                </div>
+                <div class="todo-item__text slide-up">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Voluptas
+                    ipsam voluptates atque illum placeat exercitationem nesciunt cupiditate dolore nobis fugiat
+                    distinctio
+                    repudiandae amet ipsum expedita, maiores illo reiciendis blanditiis magnam?</div>
+                <div class="todo-item__control-panel row">
+                    <button class="todo-item__edit">Изменить</button>
+                    <button class="todo-item__remove">Закрыть</button>
+                    <button class="todo-item__toggle">Развернуть</button>
+                </div>
+            </div>
+        </div>
+        <div class="todo__control-panel row">
+            <button class="todo__add">Новая задача</button>
+            <div class="todo__sort-priority-wrapper"><input type="checkbox" name="todo__sort-priority" id="todo__sort-priority"><label
+                    for="todo__sort-priority">по приоритету
+                </label></div>
+            <select name="todo__filter-projects" class="todo__filter-projects">
+                <option value="0">Все</option>
+            </select>
+        </div>
+        <form class="todo__form hidden">
+            <div class="todo-form-input-wrapper row">
+                <div class="todo-form-label">Название задачи:</div>
+                <input type="text" class="todo__form_item todo__form_item_title" placeholder="Введите название задачи">
+            </div>
+            <div class="todo-form-input-wrapper row">
+                <div class="todo-form-label">Название проекта:</div>
+                <input type="text" class="todo__form_item todo__form_item_project" placeholder="Введите название проекта">
+            </div>
+            <div class="todo-form-input-wrapper row">
+                <div class="todo-form-label">Приоритет:</div>
+                <select name="todo__form_priority" class="todo__form_item todo__form_item_priority">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="todo-form-input-wrapper row row_align_top">
+                <div class="todo-form-label">Описание:</div>
+                <textarea name="" cols="25" rows="5" class="todo__form_item todo__form_item_text" placeholder="Введите описание проекта"></textarea>
+            </div>
+            <div class="todo-form-input-wrapper row row_align_right">
+                <button class="todo__form_btn todo__form_btn_submit">Сохранить</button>
+                <button class="todo__form_btn todo__form_btn_cancel">Отменить</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="demoTasks">Load Demo Tasks</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+@import "~normalize.css/normalize"
+@import "vars"
+@import "mixins"
+
+*,
+  &::before,
+  &::after
+    box-sizing: border-box
+
+html 
+    height: 100%
+
+body
+    height: 100%
+    color: var(--main-color)
+    font: 16px Helvetica, Arial, sans-serif
+    line-height: 1
+
+/*-- HELPER CLASSES --*/
+.hidden
+    display: none !important
+
+.row
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin: 10px 0
+
+    &.row_align_top
+        align-items: baseline
+    &.row_align_right
+        justify-content: flex-end
+
+
+.slide-up
+    max-height: 0       
+    overflow-y: hidden
+    transition: max-height 0.5s ease-in-out
+
+
+
+/*-- TODOLIST --*/
+.todo
+    margin: 0 auto
+    width: 420px
+
+    &__title
+        text-align: center
+
+    &__list
+        @include block-view(15px, var(--light-gray))
+        margin: 10px 0
+        height: 400px
+        overflow-y: scroll
+
+        .todo-item
+            @include block-view(15px, var(--light-gray))
+            margin: 10px 0
+
+            &__title
+                margin: 0 0 10px
+                font-size: 20px
+
+            &__label
+                margin-right: 5px
+                color: var(--light-gray)
+
+    &__control-panel
+        @include block-view(15px, var(--light-gray))
+
+    // FORM
+    &__form
+        @include block-view(15px, var(--light-gray))
+
+        .todo-form-input-wrapper
+            position: relative
+
+            &_invalid
+                &::after
+                    position: absolute
+                    left: calc(100% + 24px)
+                    top: 4px
+                    width: 290px
+                    content: 'Поле обязательно для заполнения.'
+                    color: var(--red)
+                    font-weight: bold
+
+                input,
+                textarea
+                    border: 2px solid var(--red)
+
+        .todo-form-label
+            flex: 1 1 150px
+            padding-right: 10px
+            text-align: right
+
+        .todo__form_item
+            flex: 1 1 220px
+
+        .todo__form_btn
+            margin: 5px 10px
+
+#demoTasks
+    position: fixed
+    top: 25px
+    right: 25px
+    padding: 15px
+    cursor: pointer
+    background: orange
