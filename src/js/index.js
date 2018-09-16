@@ -22,7 +22,6 @@ loadTodolistFromStorage();
 function addDemoTask() {
   fetch("http://deco-creative.com.ua/demoTasks.json")
     .then(response => response.json())
-    // .then(json => console.log(json))
     .then(data => {
       // clear current HTML todolist
       document.querySelector(".todo__list").innerHTML = "";
